@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StillFi – Back-office externalisé pour artisans, TPE et PME</title>
+  <title>StillFi - Back-office externalise pour artisans, TPE et PME</title>
   <meta name="description" content="StillFi gère vos devis, factures et relances pendant que vous êtes sur le chantier." />
 
   <!-- Google Fonts : Playfair Display (display) + DM Sans (body) -->
@@ -1205,7 +1205,7 @@
 
     <div class="container">
       <div class="hero-content reveal">
-        <div class="hero-tag">Back-office externalisé pour artisans, TPE et PME</div>
+        <div class="hero-tag">Back-office externalise pour artisans, TPE et PME</div>
 
         <h1>Vous construisez.<br /><em>Nous structurons.</em></h1>
 
@@ -1429,7 +1429,7 @@
           <div class="pack-price">1 390€<span>/mois HT</span></div>
           <div class="pack-signature-note">Sur étude personnalisée</div>
           <ul class="pack-features">
-            <li>Direction administrative externalisée</li>
+            <li>Direction administrative externalisee</li>
             <li>Structuration de vos process</li>
             <li>Analyse rentabilité chantiers</li>
             <li>Coordination comptable</li>
@@ -1722,50 +1722,25 @@
         const email = document.getElementById('email').value;
         const profession = document.getElementById('profession').value;
 
+        const emailSubject = `Demande de rendez-vous ${prenom} ${nom}`;
+
         const emailBody = `
-[Logo StillFi]
+Bonjour,
 
-================================================================================
-                              STILLFI
-               Back-office externalisé pour artisans, TPE et PME
-================================================================================
+Nouvelle demande de rendez-vous depuis le site StillFi.
 
-Cher(e) responsable StillFi,
-
-Nous avons le plaisir de vous transmettre une nouvelle demande de rendez-vous
-reçue via notre site web.
-
-DEMANDEUR :
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Nom complet    : ${prenom} ${nom}
-• Téléphone      : ${tel}
-• Adresse email  : ${email}
-• Profession     : ${profession}
-
-RENDEZ-VOUS SOLLICITÉ :
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Type           : Audit gratuit de 30 minutes
-• Canal          : Site web StillFi
-• Date de demande: ${new Date().toLocaleDateString('fr-FR')}
-
-COMMENTAIRES :
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Veuillez ajouter vos commentaires ou questions ici]
-
-Nous vous remercions de prendre contact avec ce prospect dans les plus brefs délais.
+Informations :
+- Nom : ${nom}
+- Prénom : ${prenom}
+- Téléphone : ${tel}
+- Email : ${email}
+- Profession : ${profession}
 
 Cordialement,
-L'équipe StillFi
-Site web : https://stillfi.fr
-Téléphone : [Votre numéro]
-Email : contact@stillfi.fr
-
-================================================================================
-Ce message a été généré automatiquement depuis le formulaire de contact.
-================================================================================
-        `;
+`;
 
         document.getElementById('emailBody').value = emailBody;
+        document.querySelector('input[name="subject"]').value = emailSubject;
 
         // Show success message
         contactForm.style.display = 'none';
