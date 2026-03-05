@@ -195,6 +195,102 @@
       bottom: -60px; left: -80px;
       width: 420px; height: 420px;
       background: radial-gradient(circle, rgba(30,48,72,0.8) 0%, transparent 70%);
+    }
+
+    /* ===========================
+       MODAL FORM
+    =========================== */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+    .modal.show { display: flex; }
+    .modal-content {
+      background: var(--white);
+      padding: 40px 32px;
+      border-radius: calc(var(--radius) + 4px);
+      width: 100%;
+      max-width: 420px;
+      color: var(--navy);
+      position: relative;
+      box-shadow: var(--shadow-card);
+      font-size: 0.95rem;
+      font-family: var(--ff-body);
+    }
+    .modal-content h2 {
+      margin-bottom: 6px;
+      font-size: 1.35rem;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      color: var(--navy-light);
+    }
+    .modal-content h2 + p {
+      font-style: italic;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+    .modal-content label {
+      display: block;
+      margin: 12px 0 4px;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--navy-light);
+    }
+    .modal-content .asterisk {
+      color: var(--orange);
+      margin-left: 2px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      border-bottom: 1px solid var(--gray-soft);
+      background: transparent;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+    .modal-content input:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+    .modal-content input::placeholder {
+      color: var(--gray-text);
+      font-style: italic;
+    }
+    .modal-content button {
+      margin-top: 28px;
+      background: var(--orange);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      color: var(--white);
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      transition: background var(--transition);
+    }
+    .modal-content button:hover {
+      background: var(--orange-lt);
+    }
+    .modal-content .close-btn {
+      background: transparent;
+      border: none;
+      position: absolute;
+      top: 8px; right: 12px;
+      font-size: 1.6rem;
+      color: var(--navy-light);
+      cursor: pointer;
+    }
       border-radius: 50%;
       pointer-events: none;
     }
@@ -1067,7 +1163,7 @@
         <a href="#process">Fonctionnement</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a href="#cta-final" class="nav-cta">Audit gratuit →</a>
+      <a href="#" class="nav-cta open-form">Audit gratuit →</a>
     </div>
   </nav>
 
@@ -1090,7 +1186,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#cta-final" class="btn-primary">
+          <a href="#" class="btn-primary open-form">
             Réserver un audit gratuit
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1124,7 +1220,7 @@
     <div class="container">
       <div class="reveal">
         <span class="section-label">Le quotidien d'un artisan</span>
-        <h2 class="section-title">Vous n'êtes pas seul<br />à <span>galérer avec le papier</span></h2>
+        <h2 class="section-title">Vous n'êtes pas seul à rencontrer des difficultés avec l'administratif</h2>
       </div>
 
       <div class="problems-grid">
@@ -1265,7 +1361,7 @@
             <li>Archivage numérique</li>
             <li>Support par email</li>
           </ul>
-          <a href="#cta-final" class="btn-pack">Prendre rendez-vous</a>
+          <a href="#" class="btn-pack open-form">Prendre rendez-vous</a>
         </div>
 
         <!-- Pack Confort (featured) -->
@@ -1280,7 +1376,7 @@
             <li>Support WhatsApp</li>
             <li>Onboarding dédié</li>
           </ul>
-          <a href="#cta-final" class="btn-pack">Prendre rendez-vous</a>
+          <a href="#" class="btn-pack open-form">Prendre rendez-vous</a>
         </div>
 
         <!-- Pack Premium -->
@@ -1295,7 +1391,7 @@
             <li>Support prioritaire</li>
             <li>Documents illimités</li>
           </ul>
-          <a href="#cta-final" class="btn-pack">Prendre rendez-vous</a>
+          <a href="#" class="btn-pack open-form">Prendre rendez-vous</a>
         </div>
 
         <!-- Pack Signature -->
@@ -1311,7 +1407,7 @@
             <li>2 appels stratégiques/mois</li>
             <li>Support prioritaire &lt;12h</li>
           </ul>
-          <a href="#cta-final" class="btn-pack">Prendre rendez-vous</a>
+          <a href="#" class="btn-pack open-form">Prendre rendez-vous</a>
         </div>
 
       </div>
@@ -1433,7 +1529,7 @@
 
         <p>Réservez votre audit gratuit de 30 minutes. Sans engagement, sans jargon — juste une conversation honnête sur ce qu'on peut faire pour vous.</p>
 
-        <a href="mailto:contact@stillfi.fr?subject=Demande d'audit gratuit" class="btn-primary" style="display: inline-flex; font-size: 1.05rem; padding: 18px 40px;">
+        <a href="#" class="btn-primary open-form" style="display: inline-flex; font-size: 1.05rem; padding: 18px 40px;">
           Réserver mon audit gratuit
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1522,5 +1618,53 @@
   </script>
 
 <!-- Version: 1.0.2 -->
+  <!-- modal form -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">×</button>
+      <h2>Réserver mon rendez-vous</h2>
+      <p>Rendez-vous de 30 minutes</p>
+      <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <label for="nom">Nom *<span class="asterisk"></span></label>
+        <input type="text" id="nom" name="Nom" placeholder="Votre nom" required />
+
+        <label for="prenom">Prénom *<span class="asterisk"></span></label>
+        <input type="text" id="prenom" name="Prénom" placeholder="Votre prénom" required />
+
+        <label for="tel">Téléphone *<span class="asterisk"></span></label>
+        <input type="tel" id="tel" name="Téléphone" placeholder="06 XX XX XX XX" required />
+
+        <label for="email">Email *<span class="asterisk"></span></label>
+        <input type="email" id="email" name="Email" placeholder="votre@adresse.com" required />
+
+        <label for="profession">Profession *<span class="asterisk"></span></label>
+        <input type="text" id="profession" name="Profession" placeholder="Votre métier" required />
+
+        <button type="submit">Soumettre la demande</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const openBtns = document.querySelectorAll('.open-form');
+    const modal = document.getElementById('contactModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        modal.classList.add('show');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    // close when clicking outside content
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('show');
+    });
+  </script>
 </body>
 </html>
