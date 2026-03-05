@@ -1673,14 +1673,15 @@
 
         <button type="submit">Soumettre la demande</button>
       </form>
-      <div id="formMessage" style="display:none; margin-top:16px; padding:12px; background:rgba(242,100,25,0.1); border-radius:6px; color:var(--white);">
-        ✓ Votre rendez-vous a été réservé ! Nous vous recontacterons sous peu.
+      <div id="formMessage" style="display:none; margin-top:16px; padding:12px; background:rgba(242,100,25,0.1); border-radius:6px; color:var(--white); text-align: center; font-weight: 500;">
+        Votre demande a été préparée. Vous allez être redirigé vers votre client de messagerie pour finaliser l'envoi.
       </div>
     </div>
   </div>
 
   <script>
-    const openBtns = document.querySelectorAll('.open-form');
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtns = document.querySelectorAll('.open-form');
     const modal = document.getElementById('contactModal');
     const closeBtn = document.getElementById('closeModal');
 
@@ -1722,27 +1723,46 @@
         const profession = document.getElementById('profession').value;
 
         const emailBody = `
-[Logo StillFi: https://stillfi.fr/logo.png]
+[Logo StillFi]
 
-========================================
-          STILLFI
-   Back-office externalisé pour artisans
-========================================
+================================================================================
+                              STILLFI
+               Back-office externalisé pour artisans, TPE et PME
+================================================================================
 
-Bonjour,
+Cher(e) responsable StillFi,
 
-Nouvelle demande de rendez-vous depuis le site StillFi.
+Nous avons le plaisir de vous transmettre une nouvelle demande de rendez-vous
+reçue via notre site web.
 
-Informations du demandeur :
-- Nom : ${nom}
-- Prénom : ${prenom}
-- Téléphone : ${tel}
-- Email : ${email}
-- Profession : ${profession}
+DEMANDEUR :
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Nom complet    : ${prenom} ${nom}
+• Téléphone      : ${tel}
+• Adresse email  : ${email}
+• Profession     : ${profession}
+
+RENDEZ-VOUS SOLLICITÉ :
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Type           : Audit gratuit de 30 minutes
+• Canal          : Site web StillFi
+• Date de demande: ${new Date().toLocaleDateString('fr-FR')}
+
+COMMENTAIRES :
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Veuillez ajouter vos commentaires ou questions ici]
+
+Nous vous remercions de prendre contact avec ce prospect dans les plus brefs délais.
 
 Cordialement,
 L'équipe StillFi
-========================================
+Site web : https://stillfi.fr
+Téléphone : [Votre numéro]
+Email : contact@stillfi.fr
+
+================================================================================
+Ce message a été généré automatiquement depuis le formulaire de contact.
+================================================================================
         `;
 
         document.getElementById('emailBody').value = emailBody;
@@ -1760,7 +1780,7 @@ L'équipe StillFi
         }, 3000);
       });
     }
-    }
+    });
   </script>
 </body>
 </html>
