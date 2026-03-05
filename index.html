@@ -1653,9 +1653,7 @@
       <button class="close-btn" id="closeModal">×</button>
       <h2>Réserver mon rendez-vous</h2>
       <p>Rendez-vous de 30 minutes</p>
-      <form id="contactForm" action="mailto:contact@stillfi.fr" method="post" enctype="text/plain">
-        <input type="hidden" name="subject" value="Demande de rendez-vous - StillFi" />
-        <input type="hidden" name="body" id="emailBody" />
+      <form id="contactForm">
         <label for="nom">Nom *<span class="asterisk"></span></label>
         <input type="text" id="nom" name="Nom" placeholder="Votre nom" required />
 
@@ -1716,16 +1714,15 @@
 
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         const nom = document.getElementById('nom').value;
         const prenom = document.getElementById('prenom').value;
         const tel = document.getElementById('tel').value;
         const email = document.getElementById('email').value;
         const profession = document.getElementById('profession').value;
 
-        const emailSubject = `Demande de rendez-vous ${prenom} ${nom}`;
-
-        const emailBody = `
-Bonjour,
+          const subject = `Demande de rendez-vous ${prenom} ${nom}`;
+          const body = `Bonjour,
 
 Nouvelle demande de rendez-vous depuis le site StillFi.
 
@@ -1736,11 +1733,10 @@ Informations :
 - Email : ${email}
 - Profession : ${profession}
 
-Cordialement,
-`;
+Cordialement,`;
 
-        document.getElementById('emailBody').value = emailBody;
-        document.querySelector('input[name="subject"]').value = emailSubject;
+          const mailtoLink = `mailto:contact@stillfi.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
 
         // Show success message
         contactForm.style.display = 'none';
